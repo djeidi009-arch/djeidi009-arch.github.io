@@ -57,7 +57,6 @@
       letter-spacing: -0.02em;
       color: var(--c1);
       text-decoration: none;
-      text-transform: uppercase;
       background: none;
       border: none;
       cursor: pointer;
@@ -107,7 +106,6 @@
       font-weight: 400;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      text-transform: uppercase;
       color: var(--c1);
     }
 
@@ -124,13 +122,15 @@
     }
 
     .project {
-      padding: 40px 0 60px;
-      border-top: 1px solid #e0e0e0;
+      padding: 0 0 80px;
     }
 
-    .project:last-child {
-      border-bottom: 1px solid #e0e0e0;
-      margin-bottom: 60px;
+    .project-image-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #dce8f8, #c8d9f0);
+      margin-bottom: 24px;
     }
 
     .project-image {
@@ -138,7 +138,6 @@
       aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
-      margin-bottom: 24px;
     }
 
     .project-header {
@@ -169,15 +168,7 @@
       font-weight: 400;
       line-height: 1.25;
       color: var(--c2);
-      margin-bottom: 10px;
       max-width: 840px;
-    }
-
-    .project-company {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--c3);
     }
 
     /* ── FOOTER ── */
@@ -204,7 +195,6 @@
       letter-spacing: -0.02em;
       color: var(--c1);
       text-decoration: none;
-      text-transform: uppercase;
       transition: opacity 0.15s;
     }
 
@@ -273,7 +263,10 @@
       <a href="mailto:designbynikita@yandex.ru">designbynikita@yandex.ru</a>
     </div>
     <div class="nav-right">
-      <a href="https://t.me/designbynikita" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://t.me/designbynikita" target="_blank" rel="noopener">
+        <span data-ru>Телеграм</span><span data-en>Telegram</span>
+      </a>
+      <a href="https://www.linkedin.com/in/nikita-chernomyrdin-163033194/" target="_blank" rel="noopener" id="nav-linkedin">LinkedIn</a>
       <a href="cv/Резюме_Черномырдин.pdf" target="_blank" id="nav-cv">
         <span data-ru>Резюме</span><span data-en>Resume</span>
       </a>
@@ -301,7 +294,7 @@
   <section class="projects">
 
     <div class="project">
-      <img class="project-image" src="images/sherlock.png" alt="Шерлок">
+      <div class="project-image-wrap"><img class="project-image" src="images/sherlock.png" alt="Шерлок"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>Шерлок — агрегатор сканеров для проверки кода на уязвимости</span>
@@ -316,11 +309,11 @@
         <span data-ru>Разработал с нуля дизайн для платформы безопасной разработки. Запустил 20+ юзабилити-тестов с корпоративными клиентами, устранив 75% выявленных проблем с удобством использования.</span>
         <span data-en>Delivered end-to-end design for a secure development platform built from scratch. Ran 20+ usability tests with enterprise clients, resolving 75% of identified usability issues.</span>
       </p>
-      <div class="project-company">Axel PRO · Product Design Lead</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/logiq.png" alt="LogIQ">
+      <div class="project-image-wrap"><img class="project-image" src="images/logiq.png" alt="LogIQ"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>LogIQ — менеджер логов для сбора, обработки и хранения данных</span>
@@ -335,11 +328,11 @@
         <span data-ru>Сделал с нуля сервис для менеджмента логов. Внедрил и масштабировал дизайн-систему, что сократило время разработки на 22% и время проверок QA на 18%.</span>
         <span data-en>Built a log management service from scratch. Implemented and scaled the design system, cutting feature development time by 22% and QA checks by 18%.</span>
       </p>
-      <div class="project-company">Axel PRO · Product Design Lead</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/bizone.png" alt="BI.ZONE">
+      <div class="project-image-wrap"><img class="project-image" src="images/bizone.png" alt="BI.ZONE"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>BI.ZONE — фаервол, защита почты и SDS</span>
@@ -351,11 +344,11 @@
         <span data-ru>Спроектировал ключевые продукты в сфере кибербезопасности: Firewall, защиту почты и DDoS-инструменты. Увеличил скорость выполнения задач клиентами на 30% и повысил CSAT на 17%.</span>
         <span data-en>Designed key cybersecurity products (Firewall, email security, DDoS tools), improving task completion speed by 30% and boosting trust scores (CSAT +17%).</span>
       </p>
-      <div class="project-company">BI.ZONE · Senior Product Designer</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/domclick.png" alt="Домклик">
+      <div class="project-image-wrap"><img class="project-image" src="images/domclick.png" alt="Домклик"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>Домклик — система для менеджеров ипотечного кредитования</span>
@@ -367,11 +360,11 @@
         <span data-ru>Объединил 3 банковских сервиса в одну платформу, подтвердив решения полевыми исследованиями. Сократил время онбординга менеджеров на 40% и сэкономил компании ~$144 000 в год.</span>
         <span data-en>Unified three banking services into one streamlined platform, validated through field research. Cut manager onboarding time by 40% and saved the company ~$144,000 annually.</span>
       </p>
-      <div class="project-company">DomClick · Senior Product Designer</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/mts.png" alt="МТС">
+      <div class="project-image-wrap"><img class="project-image" src="images/mts.png" alt="МТС"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>МТС — техническая база знаний для project-менеджеров</span>
@@ -383,11 +376,11 @@
         <span data-ru>Переработал внутреннюю базу знаний, сократив время поиска информации с 10 до 4 минут и уменьшив количество повторных обращений в поддержку на 25%.</span>
         <span data-en>Redesigned the internal knowledge base, cutting search time from 10 to 4 minutes and reducing repeated support requests by 25%.</span>
       </p>
-      <div class="project-company">MTS · Middle Product Designer</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/sms.png" alt="SMS сервис">
+      <div class="project-image-wrap"><img class="project-image" src="images/sms.png" alt="SMS сервис"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>Сервис для рассылки СМС</span>
@@ -399,11 +392,11 @@
         <span data-ru>Редизайнил сервис для рассылок. Через него крупные операторы, банки и компании отправляют СМС и сообщения в Viber, VK и другие каналы.</span>
         <span data-en>Redesigned an SMS broadcast service used by major telecom operators, banks, and companies for SMS, Viber, VK, and other messaging channels.</span>
       </p>
-      <div class="project-company">B2B · Senior Product Designer</div>
+
     </div>
 
     <div class="project">
-      <img class="project-image" src="images/mfo.png" alt="Честный сайт МФО">
+      <div class="project-image-wrap"><img class="project-image" src="images/mfo.png" alt="Честный сайт МФО"></div>
       <div class="project-header">
         <div class="project-title">
           <span data-ru>Честный сайт МФО</span>
@@ -415,7 +408,7 @@
         <span data-ru>Спроектировал калькулятор и интерфейс личного кабинета для банковского сервиса, увеличив долю активных пользователей на 28%.</span>
         <span data-en>Designed a calculator and personal account interface for a banking service, increasing active user adoption by 28%.</span>
       </p>
-      <div class="project-company">GreenMoney · Junior Product Designer</div>
+
     </div>
 
   </section>
@@ -424,7 +417,12 @@
   <footer>
     <ul class="footer-links">
       <li><a href="mailto:designbynikita@yandex.ru"><span data-ru>Почта</span><span data-en>Email</span></a></li>
-      <li><a href="https://t.me/designbynikita" target="_blank" rel="noopener">Telegram</a></li>
+      <li>
+        <a href="https://t.me/designbynikita" target="_blank" rel="noopener">
+          <span data-ru>Телеграм</span><span data-en>Telegram</span>
+        </a>
+      </li>
+      <li><a href="https://www.linkedin.com/in/nikita-chernomyrdin-163033194/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li>
         <a href="cv/Резюме_Черномырдин.pdf" target="_blank" id="footer-cv">
           <span data-ru>Резюме</span><span data-en>Resume</span>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Никита Черномырдин — Продуктовый дизайнер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --c1: #252525;
+      --c2: #333333;
+      --c3: #575757;
+      --bg: #ffffff;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--c1);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+    }
+
+    .nav-left a,
+    .nav-right a,
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--c1);
+      text-decoration: none;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.15s;
+    }
+
+    .nav-left a:hover,
+    .nav-right a:hover,
+    .lang-btn:hover {
+      opacity: 0.5;
+    }
+
+    .lang-btn.inactive {
+      opacity: 0.35;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-sep {
+      font-size: 16px;
+      color: var(--c3);
+      letter-spacing: 0;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 62% 38%;
+      align-items: end;
+      padding: 160px 0 120px;
+      gap: 60px;
+    }
+
+    .hero-name {
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--c1);
+    }
+
+    .hero-bio {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--c2);
+    }
+
+    /* ── PROJECTS ── */
+    .projects {
+      padding-bottom: 100px;
+    }
+
+    .project {
+      padding: 40px 0 60px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .project:last-child {
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 60px;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 40px;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--c1);
+    }
+
+    .project-year {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--c2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-desc {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--c2);
+      margin-bottom: 10px;
+      max-width: 840px;
+    }
+
+    .project-company {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--c3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 60px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .footer-links a,
+    .footer-copy {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--c1);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.5;
+    }
+
+    .footer-copy {
+      color: var(--c3);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+
+    /* ── LANGUAGE VISIBILITY ── */
+    [data-ru], [data-en] { display: none; }
+    .ru [data-ru] { display: inline; }
+    .en [data-en] { display: inline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 80px 0 60px;
+        gap: 32px;
+      }
+      .hero-name {
+        font-size: 28px;
+      }
+      .hero-bio {
+        font-size: 18px;
+      }
+      .project-title {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 0 20px;
+      }
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .nav-right {
+        gap: 24px;
+      }
+      .project-header {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .footer-links {
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body class="ru">
+
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <a href="mailto:designbynikita@yandex.ru">designbynikita@yandex.ru</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://t.me/designbynikita" target="_blank" rel="noopener">Telegram</a>
+      <a href="cv/Резюме_Черномырдин.pdf" target="_blank" id="nav-cv">
+        <span data-ru>Резюме</span><span data-en>Resume</span>
+      </a>
+      <div class="lang-toggle">
+        <button class="lang-btn" id="btn-ru" onclick="setLang('ru')">RU</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-name">
+      <span data-ru>Никита Черномырдин<br>Продуктовый дизайнер</span>
+      <span data-en>Nikita Chernomyrdin<br>Product Designer</span>
+    </h1>
+    <p class="hero-bio">
+      <span data-ru>Senior product designer с более чем 7 годами опыта в B2B и SaaS. Упрощаю сложные интерфейсы, провожу юзабилити-тесты и масштабирую дизайн-системы, которые сокращают сроки разработки.</span>
+      <span data-en>Product Design Lead with 7+ years in B2B and SaaS. Expert in simplifying complex interfaces, running usability tests, and scaling design systems that reduce delivery time.</span>
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects">
+
+    <div class="project">
+      <img class="project-image" src="images/sherlock.png" alt="Шерлок">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>Шерлок — агрегатор сканеров для проверки кода на уязвимости</span>
+          <span data-en>Sherlock — code vulnerability scanner aggregator</span>
+        </div>
+        <div class="project-year">
+          <span data-ru>2023 — н.в</span>
+          <span data-en>2023 — Present</span>
+        </div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Разработал с нуля дизайн для платформы безопасной разработки. Запустил 20+ юзабилити-тестов с корпоративными клиентами, устранив 75% выявленных проблем с удобством использования.</span>
+        <span data-en>Delivered end-to-end design for a secure development platform built from scratch. Ran 20+ usability tests with enterprise clients, resolving 75% of identified usability issues.</span>
+      </p>
+      <div class="project-company">Axel PRO · Product Design Lead</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/logiq.png" alt="LogIQ">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>LogIQ — менеджер логов для сбора, обработки и хранения данных</span>
+          <span data-en>LogIQ — log management service for data collection and storage</span>
+        </div>
+        <div class="project-year">
+          <span data-ru>2023 — н.в</span>
+          <span data-en>2023 — Present</span>
+        </div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Сделал с нуля сервис для менеджмента логов. Внедрил и масштабировал дизайн-систему, что сократило время разработки на 22% и время проверок QA на 18%.</span>
+        <span data-en>Built a log management service from scratch. Implemented and scaled the design system, cutting feature development time by 22% and QA checks by 18%.</span>
+      </p>
+      <div class="project-company">Axel PRO · Product Design Lead</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/bizone.png" alt="BI.ZONE">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>BI.ZONE — фаервол, защита почты и SDS</span>
+          <span data-en>BI.ZONE — firewall, email security and SDS</span>
+        </div>
+        <div class="project-year">2022 — 2023</div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Спроектировал ключевые продукты в сфере кибербезопасности: Firewall, защиту почты и DDoS-инструменты. Увеличил скорость выполнения задач клиентами на 30% и повысил CSAT на 17%.</span>
+        <span data-en>Designed key cybersecurity products (Firewall, email security, DDoS tools), improving task completion speed by 30% and boosting trust scores (CSAT +17%).</span>
+      </p>
+      <div class="project-company">BI.ZONE · Senior Product Designer</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/domclick.png" alt="Домклик">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>Домклик — система для менеджеров ипотечного кредитования</span>
+          <span data-en>DomClick — mortgage management platform</span>
+        </div>
+        <div class="project-year">2020 — 2022</div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Объединил 3 банковских сервиса в одну платформу, подтвердив решения полевыми исследованиями. Сократил время онбординга менеджеров на 40% и сэкономил компании ~$144 000 в год.</span>
+        <span data-en>Unified three banking services into one streamlined platform, validated through field research. Cut manager onboarding time by 40% and saved the company ~$144,000 annually.</span>
+      </p>
+      <div class="project-company">DomClick · Senior Product Designer</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/mts.png" alt="МТС">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>МТС — техническая база знаний для project-менеджеров</span>
+          <span data-en>MTS — technical knowledge base for project managers</span>
+        </div>
+        <div class="project-year">2018 — 2020</div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Переработал внутреннюю базу знаний, сократив время поиска информации с 10 до 4 минут и уменьшив количество повторных обращений в поддержку на 25%.</span>
+        <span data-en>Redesigned the internal knowledge base, cutting search time from 10 to 4 minutes and reducing repeated support requests by 25%.</span>
+      </p>
+      <div class="project-company">MTS · Middle Product Designer</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/sms.png" alt="SMS сервис">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>Сервис для рассылки СМС</span>
+          <span data-en>SMS Broadcast Service</span>
+        </div>
+        <div class="project-year">2020 — 2023</div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Редизайнил сервис для рассылок. Через него крупные операторы, банки и компании отправляют СМС и сообщения в Viber, VK и другие каналы.</span>
+        <span data-en>Redesigned an SMS broadcast service used by major telecom operators, banks, and companies for SMS, Viber, VK, and other messaging channels.</span>
+      </p>
+      <div class="project-company">B2B · Senior Product Designer</div>
+    </div>
+
+    <div class="project">
+      <img class="project-image" src="images/mfo.png" alt="Честный сайт МФО">
+      <div class="project-header">
+        <div class="project-title">
+          <span data-ru>Честный сайт МФО</span>
+          <span data-en>GreenMoney — MFO website</span>
+        </div>
+        <div class="project-year">2017 — 2018</div>
+      </div>
+      <p class="project-desc">
+        <span data-ru>Спроектировал калькулятор и интерфейс личного кабинета для банковского сервиса, увеличив долю активных пользователей на 28%.</span>
+        <span data-en>Designed a calculator and personal account interface for a banking service, increasing active user adoption by 28%.</span>
+      </p>
+      <div class="project-company">GreenMoney · Junior Product Designer</div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul class="footer-links">
+      <li><a href="mailto:designbynikita@yandex.ru"><span data-ru>Почта</span><span data-en>Email</span></a></li>
+      <li><a href="https://t.me/designbynikita" target="_blank" rel="noopener">Telegram</a></li>
+      <li>
+        <a href="cv/Резюме_Черномырдин.pdf" target="_blank" id="footer-cv">
+          <span data-ru>Резюме</span><span data-en>Resume</span>
+        </a>
+      </li>
+    </ul>
+    <span class="footer-copy">Nikita Chernomyrdin © 2025</span>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.getElementById('btn-ru').classList.toggle('inactive', lang !== 'ru');
+    document.getElementById('btn-en').classList.toggle('inactive', lang !== 'en');
+
+    var cvRu = 'cv/%D0%A0%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5_%D0%A7%D0%B5%D1%80%D0%BD%D0%BE%D0%BC%D1%8B%D1%80%D0%B4%D0%B8%D0%BD.pdf';
+    var cvEn = 'cv/Chernomyrdin.pdf';
+    document.getElementById('nav-cv').href = lang === 'ru' ? cvRu : cvEn;
+    document.getElementById('footer-cv').href = lang === 'ru' ? cvRu : cvEn;
+
+    document.title = lang === 'ru'
+      ? 'Никита Черномырдин — Продуктовый дизайнер'
+      : 'Nikita Chernomyrdin — Product Designer';
+
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
